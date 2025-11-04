@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chori Ki Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/empico.png">
+</head>
+<body>
+    <!-- ===== Header / Navbar ===== -->
+<header class="site-header">
+  <nav class="container nav">
+    <a href="#" class="brand" aria-label="Home">
+      <span class="logo">⚡</span>
+      <span class="brand-text">Sir Ab. Wahab</span>
+    </a>
+
+    <div class="nav-actions">
+      <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme">🌓</button>
+      <a href="#cta" class="btn btn-primary">Get Started</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== Hero Section ===== -->
+<main id="top" class="hero">
+  <div class="container hero-inner">
+    <h1 class="hero-title">
+      Build. Ship. <span class="accent">Repeat.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Minimal front-end starter for CodePen: clean HTML, utility classes, and JS hooks.
+      Perfect for content, reels, or quick demos.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#gallery" class="btn btn-primary">See Components</a>
+      <a href="#how" class="btn btn-ghost">How it Works</a>
+    </div>
+
+    <!-- Optional hero media placeholder -->
+    <div class="hero-media" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="card shadow">
+        <code>
+          // Tip: Use Babel in JS panel<br />
+          const hello = () => console.log("Namaste, CodePen!");
+        </code>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ===== Features / Cards ===== -->
+<section id="gallery" class="section">
+  <div class="container">
+    <h2 class="section-title">Ready-to-Use Blocks</h2>
+
+    <div class="grid">
+      <article class="card">
+        <h3 class="card-title">To-Do Component</h3>
+        <p class="card-text">Simple JS list with localStorage. Great for shorts/reels.</p>
+        <button class="btn btn-secondary" data-action="demo" data-demo="todo">Try Demo</button>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Dark Mode</h3>
+        <p class="card-text">One-click theme switch using <code>data-theme</code>.</p>
+        <button class="btn btn-secondary" id="quickDark">Toggle Dark</button>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Animated Hero</h3>
+        <p class="card-text">Pure CSS gradient blob; no images required.</p>
+        <a href="#top" class="btn btn-secondary">Scroll Top</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== How it Works ===== -->
+<section id="how" class="section alt">
+  <div class="container flow">
+    <h2 class="section-title">How it Works</h2>
+    <ol class="steps">
+      <li><strong>HTML panel:</strong> Yehi structure paste karo.</li>
+      <li><strong>CSS panel:</strong> Classes (.container, .btn, .grid, .card…) style karo.</li>
+      <li><strong>JS panel:</strong> Buttons ke IDs/hooks pe logic lagao.</li>
+    </ol>
+    <details>
+      <summary>JS Hook IDs / Data-attrs</summary>
+      <ul>
+        <li><code>#themeToggle</code> – light/dark switch</li>
+        <li><code>#quickDark</code> – quick toggle demo</li>
+        <li><code>[data-action="demo"][data-demo="todo"]</code> – to-do demo button</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta" class="section cta">
+  <div class="container cta-inner">
+    <h2 class="cta-title">Ship Your Next Pen in 5 Minutes</h2>
+    <p class="cta-text">Fork, tweak, post—repeat. Titles, tags, and clean preview = more reach.</p>
+    <a href="#top" class="btn btn-primary">Fork & Build</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span>East and West Sir Ab. Wahab is Best</p>
+    <a href="#top" class="link">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- ===== Minimal Inline Helpers (optional) ===== -->
+<script>
+  // Year stamp
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Theme toggle (works with CSS using [data-theme])
+  const root = document.documentElement;
+  const applyTheme = (dark) => {
+    root.setAttribute("data-theme", dark ? "dark" : "light");
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  };
+  applyTheme(localStorage.getItem("theme") === "dark");
+
+  document.getElementById("themeToggle")?.addEventListener("click", () => {
+    const isDark = root.getAttribute("data-theme") !== "dark";
+    applyTheme(isDark);
+  });
+
+  document.getElementById("quickDark")?.addEventListener("click", () => {
+    const isDark = root.getAttribute("data-theme") !== "dark";
+    applyTheme(isDark);
+  });
+
+  // Demo action hook (you can expand this)
+  document.querySelector('[data-action="demo"][data-demo="todo"]')?.addEventListener("click", () => {
+    alert("TODO demo: Add items, save to localStorage (implement in JS panel).");
+  });
+</script>
+</body>
+</html>

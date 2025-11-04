@@ -1,0 +1,247 @@
+/* ===== Base Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== Theme Vars ===== */
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --accent: #4f46e5;
+  --accent-light: #6366f1;
+  --card-bg: #f9f9f9;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg: #1e1e1e;
+  --text: #f5f5f5;
+  --accent: #38bdf8;
+  --accent-light: #0ea5e9;
+  --card-bg: #2a2a2a;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Utilities ===== */
+.container {
+  width: min(90%, 1100px);
+  margin: 0 auto;
+}
+
+.flow > * + * {
+  margin-top: 1rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section.alt {
+  background: var(--card-bg);
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: var(--bg);
+  box-shadow: 0 2px 6px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 1.4rem;
+}
+
+/* ===== Hero ===== */
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  text-align: center;
+  position: relative;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+}
+
+.hero-title .accent {
+  color: var(--accent);
+}
+
+.hero-subtitle {
+  margin: 1rem auto;
+  max-width: 600px;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.hero-cta {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hero-media {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.blob {
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: blobMove 6s infinite alternate ease-in-out;
+  margin: 0 auto;
+}
+
+@keyframes blobMove {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(20px, -20px);
+  }
+}
+
+.card.shadow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px var(--shadow);
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* ===== Grid / Cards ===== */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px var(--shadow);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-light);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+.btn-ghost:hover {
+  color: var(--accent);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  padding: 2rem 0;
+  text-align: center;
+  background: var(--card-bg);
+  font-size: 0.9rem;
+}
+
+.site-footer .link {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+}
